@@ -1,0 +1,73 @@
+type Book {
+    id: String
+    created_time: String
+    last_edited_time: String
+    properties: BookProperties
+  }
+  type BookProperties {
+    Rate: BookRate
+  }
+  type BookRate {
+    id: String
+    type: String
+    select: NotionSelect
+  }
+  type NotionSelect {
+    id: String
+    name: String
+    color: String
+  }
+  type NotionText {
+    type: String
+    text: NotionTextContent
+    annotations: NotionTextAnnotation
+    plain_text: String
+    href: String
+  }
+  type NotionTextContent {
+    content: String
+    link: String
+  }
+  type NotionTextAnnotation {
+    bold: Boolean
+    italic: Boolean
+    strikethrough: Boolean
+    underline: Boolean
+    code: Boolean
+    color: String
+  }
+  enum NotionBlockType {
+    heading_1
+    heading_2
+    bulleted_list_item
+    paragraph
+    quote
+    image
+  }
+  type NotionBlockContent {
+    rich_text: [NotionText]
+    color: String
+  }
+  type NotionBlockImageContent {
+    type: String
+    external: NotionBlockImageContentExternal
+  }
+  type NotionBlockImageContentExternal {
+    url: String
+  }
+  type NotionBlock {
+    id: String
+    type: NotionBlockType
+    heading_1: NotionBlockContent
+    heading_2: NotionBlockContent
+    bulleted_list_item: NotionBlockContent
+    paragraph: NotionBlockContent
+    quote: NotionBlockContent
+    image: NotionBlockImageContent
+  }
+  type Query {
+    hello: String
+    random(min: Int!, max: Int!): Int
+    bookshelf: [Book]
+    bookshelfLength: Int
+  }
