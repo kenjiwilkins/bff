@@ -1,7 +1,7 @@
 {
   "name": "bff",
   "scripts": {
-    "start": "MODE=development tsx watch api/index.ts",
+    "start:dev": "MODE=development tsx watch dev.ts",
     "start:vercel": "vercel dev",
     "deploy": "vercel",
     "codegen": "graphql-codegen --config codegen.ts"
